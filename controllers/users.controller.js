@@ -1,8 +1,22 @@
 // Models
 const { User} = require('../models/users.model');
 
-
 const getAllUsers = async (req, res) => {
+	try {
+		const users = await User.findAll();
+
+		res.status(200).json({
+			status: 'success',
+			data: {
+				users,
+			},
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+const getUserActive = async (req, res) => {
 	try {
 		const users = await User.findAll({ where: {status: 'active'}});
 
@@ -73,6 +87,7 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
+	getUserActive,
 	getAllUsers,
 	createUser,
 	updateUser,

@@ -7,6 +7,7 @@ const {
 	createUser,
 	updateUser,
 	deleteUser,
+	getUserActive,
 } = require('../controllers/users.controller');
 
 // Middlewares
@@ -18,6 +19,8 @@ const {
 const usersRouter = express.Router();
 
 usersRouter.get('/', getAllUsers);
+
+usersRouter.get('/', getUserActive);
 
 usersRouter.post('/', createUserValidators, createUser);
 
