@@ -50,7 +50,7 @@ getByStatus = async(req, res) =>{
     	}
 
     	const tasks = await Task.findAll({ 
-			where: { status},
+			where: {status},
 			atributes:['id', 'userId', 'title', 'limitDate', 'startDate', 'finishDate', 'status'],
 			include:[{model: User, atributes:['id', 'name']}]	
 
